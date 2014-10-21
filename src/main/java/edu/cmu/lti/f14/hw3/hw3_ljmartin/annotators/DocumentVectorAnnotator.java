@@ -6,6 +6,7 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSList;
 import org.apache.uima.jcas.cas.IntegerArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -50,10 +51,10 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
 	private void createTermFreqVector(JCas jcas, Document doc) {
 
 		String docText = doc.getText();
-		
-		//TO DO: construct a vector of tokens and update the tokenList in CAS
-    //TO DO: use tokenize0 from above 
-		
+		//TODO: construct a vector of tokens and update the tokenList in CAS
+    //TODO: use tokenize0 from above 
+		doc.setTokenList((FSList)tokenize0(docText));
+		doc.addToIndexes(jcas);
 
 	}
 
