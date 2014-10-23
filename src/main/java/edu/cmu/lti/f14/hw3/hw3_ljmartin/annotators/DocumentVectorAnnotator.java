@@ -10,6 +10,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 import edu.cmu.lti.f14.hw3.hw3_ljmartin.typesystems.Document;
 import edu.cmu.lti.f14.hw3.hw3_ljmartin.typesystems.Token;
+import edu.cmu.lti.f14.hw3.hw3_ljmartin.utils.StanfordLemmatizer;
 import edu.cmu.lti.f14.hw3.hw3_ljmartin.utils.Utils;
 
 public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
@@ -38,6 +39,39 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
     List<String> res = new ArrayList<String>();
 
     for (String s : doc.split("\\s+"))
+      res.add(s);
+    return res;
+  }
+  
+  /**
+   * A basic white-space & punctuation tokenizer.
+   *
+   * @param doc
+   *          input text
+   * @return a list of tokens.
+   */
+
+  List<String> tokenize1(String doc) {
+    List<String> res = new ArrayList<String>();
+
+    for (String s : doc.split("[\\p{Punct}\\s]+"))
+      res.add(s);
+    return res;
+  }
+  
+  /**
+   * Stemming tokenizer using Stanford Lemmatizer
+   *
+   * @param doc
+   *          input text
+   * @return a list of tokens.
+   */
+
+  List<String> tokenize2(String doc) {
+    String stemmed = StanfordLemmatizer.stemText(doc);
+    List<String> res = new ArrayList<String>();
+
+    for (String s : stemmed.split("[\\p{Punct}\\s]+"))
       res.add(s);
     return res;
   }

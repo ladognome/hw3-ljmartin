@@ -64,7 +64,8 @@ public class StanfordLemmatizer {
   public static String stemText(String text) {
     
     StringBuilder sb = new StringBuilder();
-    for (String s: text.split("\\s+")) {
+   // for (String s: text.split("\\s+")) {
+    for (String s: text.split("[\\p{Punct}\\s]+")) {      
       sb.append(stemWord(s));
       sb.append(' ');
     }
