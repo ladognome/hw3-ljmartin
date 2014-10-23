@@ -6,9 +6,6 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSList;
-import org.apache.uima.jcas.cas.IntegerArray;
-import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import edu.cmu.lti.f14.hw3.hw3_ljmartin.typesystems.Document;
@@ -46,16 +43,16 @@ public class DocumentVectorAnnotator extends JCasAnnotator_ImplBase {
   }
 
   /**
-   * 
-   * @param jcas
-   * @param doc
+   * Tokenizing and putting term-frequency counts into the CAS
+   * @param jcas The cas we will be putting things in
+   * @param doc The document we will be annotating
    */
 
   private void createTermFreqVector(JCas jcas, Document doc) {
 
     String docText = doc.getText();
-    // TODO: construct a vector of tokens and update the tokenList in CAS
-    // TODO: use tokenize0 from above
+    // construct a vector of tokens and update the tokenList in CAS
+    // use tokenize0 from above
     List<String> ls = tokenize0(docText);
     Map<String, Integer> map = new HashMap<String, Integer>();
     Collection<Token> token_collection = new ArrayList<Token>();
