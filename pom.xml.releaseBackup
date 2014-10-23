@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cmu.lti.11791.f14.hw3</groupId>
 	<artifactId>hw3-ljmartin</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<repositories>
 		<repository>
@@ -125,6 +125,6 @@
 	<scm>
 		<connection>scm:git:git@github.com:ladognome/hw3-ljmartin.git</connection>
 		<developerConnection>scm:git:git@github.com:ladognome/hw3-ljmartin.git</developerConnection>
-		<tag>hw3-ljmartin-0.0.3</tag>
+		<tag>hw2-ljmartin-0.0.3</tag>
 	</scm>
 </project>
