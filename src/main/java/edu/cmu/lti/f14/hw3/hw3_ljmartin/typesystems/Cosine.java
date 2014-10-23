@@ -13,7 +13,7 @@ public class Cosine implements Comparable<Cosine> {
   Map<String, Integer> map;
 
   int r;
-  
+
   String sent;
 
   public Cosine(double cos, Map<String, Integer> words, int rel, String sentence) {
@@ -34,7 +34,7 @@ public class Cosine implements Comparable<Cosine> {
   public int getRel() {
     return r;
   }
-  
+
   public String getSent() {
     return sent;
   }
@@ -50,7 +50,7 @@ public class Cosine implements Comparable<Cosine> {
   public void setRel(int rel) {
     r = rel;
   }
-  
+
   public void setSent(String sentence) {
     sent = sentence;
   }
@@ -60,13 +60,12 @@ public class Cosine implements Comparable<Cosine> {
     return null;
   }
 
-
   @Override
   public int compareTo(Cosine o) {
     double compareCos = o.getCos();
     if (compareCos > this.value)
       return 1;
-    else if (compareCos > this.value)
+    else if (compareCos < this.value)
       return -1;
     else
       return 0;

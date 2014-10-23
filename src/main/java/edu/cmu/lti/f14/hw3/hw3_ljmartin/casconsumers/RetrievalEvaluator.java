@@ -154,9 +154,8 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
         for (int r = 0; r < cosSort.size(); r++) {
           if (cosSort.get(r).getRel() == 1) {
             rank.put(qid, (r + 1));
-            int cos = (int) (cosSort.get(r).getCos() * 10000);
-            double c = (double) cos / 10000;
-            fileWriter.write("cosine=" + c + "\trank=" + (r + 1) + "\tqid=" + qid + "\trel=1\t"
+            String s = String.format("cosine=%.4f", cosSort.get(r).getCos());
+            fileWriter.write(s+ "\trank=" + (r + 1) + "\tqid=" + qid + "\trel=1\t"
                     + cosSort.get(r).getSent() + "\n");
             break;
           }
@@ -165,10 +164,9 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
     }
 
     double metric_mrr = compute_mrr();
-    // System.out.println(" (MRR) Mean Reciprocal Rank ::" + metric_mrr);
-    int mrr = (int) (metric_mrr * 10000);
-    double m = (double) mrr / 10000;
-    fileWriter.write("MRR=" + m);
+    System.out.println(" (MRR) Mean Reciprocal Rank ::" + metric_mrr);
+    String mrr = String.format("MRR=%.4f", metric_mrr);
+    fileWriter.write(mrr);
     if (fileWriter != null) {
       try {
         fileWriter.close();
@@ -201,14 +199,14 @@ public class RetrievalEvaluator extends CasConsumer_ImplBase {
     while (it.hasNext()) {
       Map.Entry pair = (Map.Entry) it.next();
       String word = pair.getKey().toString();
-      denom_y += docVector.get(word) ^ 2;
+      denom_y += Math.pow(docVector.get(word), 2);
     }
     // denominator, query
     it = queryVector.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry pair = (Map.Entry) it.next();
       String word = pair.getKey().toString();
-      denom_x += queryVector.get(word) ^ 2;
+      denom_x += Math.pow(queryVector.get(word), 2);
     }
     // numerator
     it = docVector.entrySet().iterator();
